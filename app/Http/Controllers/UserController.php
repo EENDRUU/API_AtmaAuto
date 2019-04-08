@@ -28,9 +28,10 @@ class UserController extends Controller
         $user->password = bcrypt($request->password);
         $user->save();
 
-        if ($this->loginAfterSignUp) {
-            return $this->login($request);
-        }
+        return response()->json([
+            'success' => true,
+            'message' => 'User Created successfully'
+        ]);
 
     }
 
