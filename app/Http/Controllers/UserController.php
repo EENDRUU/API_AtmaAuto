@@ -41,13 +41,15 @@ class UserController extends Controller
 
         if (! $token = auth()->attempt($credentials)) {
             return response()->json([
-                'success' => true,
                 'error' => 'Unauthorized',
                 'message' => 'Username or Password invalid'
-            ], 401);
+            ]);
+        }
+        else{
+            return $this->respondWithToken($token);
         }
 
-        return $this->respondWithToken($token);
+
     }
 
     public function logout(Request $request)
