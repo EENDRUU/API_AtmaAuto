@@ -35,7 +35,9 @@ class SparepartController extends Controller
 
         return response()->json([
             'success' => true,
-            'data' => $sparepart
+            'data' => $sparepart,
+            'message' => 'Success Adding Sparepart'
+
         ], 200);
     }
 
