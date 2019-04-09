@@ -31,8 +31,6 @@ class JwtMiddleware
                 return response()->json(['message' => 'Authorization Token not found']);
             }
         }
-
-
         return $next($request);
     }
 }

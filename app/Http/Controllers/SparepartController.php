@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Sparepart;
 use Illuminate\Http\Request;
-use JWTAuth;
+use Tymon\JWTAuth\Facades\JWTAuth;
+use Illuminate\Support\Facades\Auth;
+use Tymon\JWTAuth\Exceptions\JWTException;
 
 class SparepartController extends Controller
 {
