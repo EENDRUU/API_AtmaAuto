@@ -41,12 +41,12 @@ class SparepartController extends Controller
     public function show($kode_sparepart)
     {
         $sparepart=Sparepart::find($kode_sparepart);
-        if (!$sparepart) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Sorry, sparepart with kode sparepart: ' . $kode_sparepart . ' cannot be found'
-            ], 400);
-        }
+        // if (!$sparepart) {
+        //     return response()->json([
+        //         'success' => false,
+        //         'message' => 'Sorry, sparepart with kode sparepart: ' . $kode_sparepart . ' cannot be found'
+        //     ]);
+        // }
         return response()->json([$sparepart],200);
     }
 
