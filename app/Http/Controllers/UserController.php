@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\User;
+use App\Pegawai;
 use App\Http\Requests\RegisterAuthRequest;
 use Tymon\JWTAuth\Facades\JWTAuth;
 use Tymon\JWTAuth\Exceptions\JWTException;
@@ -74,7 +75,9 @@ class UserController extends Controller
     {
         $token = JWTAuth::getToken();
         $user = JWTAuth::toUser($token);
-        return response()->json(compact('user'));
+        $pegawai=Pegawai::find($user->id_pegawai);
+
+        return response()->json($pegawai,200);
     }
 
     public function changePassword(Request $request)
