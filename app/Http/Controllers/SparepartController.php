@@ -43,9 +43,15 @@ class SparepartController extends Controller
         $sparepart=Sparepart::find($kode_sparepart);
         if(is_null($sparepart))
         {
-            return response()->json("not found",404);
+            return response()->json([
+                'success' => false,
+                'message' => 'Sorry, sparepart with kode sparepart: ' . $kode_sparepart . ' cannot be found'
+            ], 400);
         }
-        return response()->json($sparepart,200);
+        return response()->json([
+            $sparepart,
+            'message' => 'success'
+        ],200);
     }
 
     public function update(Request $request, $kode_sparepart)
