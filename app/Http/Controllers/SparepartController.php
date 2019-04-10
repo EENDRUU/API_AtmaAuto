@@ -59,11 +59,12 @@ class SparepartController extends Controller
     {
         $sparepart=Sparepart::find($kode_sparepart);
 
-        if (!$sparepart) {
+        if(is_null($sparepart))
+        {
             return response()->json([
                 'success' => false,
                 'message' => 'Sorry, sparepart with kode sparepart: ' . $kode_sparepart . ' cannot be found'
-            ], 400);
+            ]);
         }
 
         $updated = $sparepart->fill($request->all())
@@ -72,12 +73,13 @@ class SparepartController extends Controller
         if ($updated) {
             return response()->json([
                 'success' => true,
-                'data' => $sparepart
+                'data' => $sparepart,
+                'message' => 'Sparepart updated'
             ]);
         } else {
             return response()->json([
                 'success' => false,
-                'message' => 'Sorry, product could not be updated'
+                'message' => 'Sorry, sparepart could not be updated'
             ], 500);
         }
     }
@@ -88,17 +90,29 @@ class SparepartController extends Controller
         $sparepart=Sparepart::find($kode_sparepart);
         if(is_null($sparepart))
         {
-            return response()->json("not found",404);
+            return response()->json([
+                'success' => false,
+                'message' => 'Sorry, sparepart with kode sparepart: ' . $kode_sparepart . ' cannot be found'
+            ]);
         }
 
         $success=$sparepart->delete();
 
         if(!$success)
         {
-            return response()->json("error deleting",500);
+            return response()->json([
+                'success' => false,
+                'message' => 'Sorry, sparepart could not be deleted'
+            ], 500);
+        }
+        else{
+            return response()->json([
+                'success' => true,
+                'data' => $sparepart,
+                'message' => 'Sparepart Deleted'
+            ]);
         }
 
-        return response()->json("success",200);
     }
 
 }
