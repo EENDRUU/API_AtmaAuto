@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Sparepart;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 use Illuminate\Http\Request;
 use JWTAuth;
 use Illuminate\Support\Facades\Auth;
@@ -19,8 +21,16 @@ class SparepartController extends Controller
 
     public function store(Request $request)
     {
+
+        $gambar = $request->file('gambarSparepart');
+        $extension = $gambar->getClientOriginalExtension();
+        Storage::disk('public')->put($gambar->getFilename().'.'.$extension,  File::get($gambar));
+
         $sparepart = new Sparepart();
         $sparepart->kode_sparepart = $request->kode_sparepart;
+        $sparepart->mime = $gambar->getClientMimeType();
+        $sparepart->original_filename = $gambar->getClientOriginalName();
+        $sparepart->filename = $gambar->getFilename().'.'.$extension;
         $sparepart->hargaBeli = $request->hargaBeli;
         $sparepart->hargaJual = $request->hargaJual;
         $sparepart->kodeTempat = $request->kodeTempat;

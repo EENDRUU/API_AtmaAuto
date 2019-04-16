@@ -15,6 +15,9 @@ class CreateSparepartsTable extends Migration
     {
         Schema::create('spareparts', function (Blueprint $table) {
             $table->string('kode_sparepart')->unique()->primary();
+            $table->string('filename')->nullable();
+            $table->string('mime')->nullable();
+            $table->string('original_filename')->nullable();
             $table->float('hargaBeli');
             $table->float('hargaJual');
             $table->string('kodeTempat');
