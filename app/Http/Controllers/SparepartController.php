@@ -38,14 +38,21 @@ class SparepartController extends Controller
         $sparepart->merek = $request->merek;
         $sparepart->tipe = $request->tipe;
         $sparepart->namaSparepart = $request->namaSparepart;
-        $sparepart->save();
+        $saved = $sparepart->save();
 
-        return response()->json([
-            'success' => true,
-            'data' => $sparepart,
-            'message' => 'Success Adding Sparepart'
+        if ($saved) {
+            return response()->json([
+                'success' => true,
+                'data' => $sparepart,
+                'message' => 'Success Adding Sparepart'
+            ]);
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' => 'Failed, Adding Sparepart'
+            ], 500);
+        }
 
-        ], 200);
     }
 
     public function show($kode_sparepart)
