@@ -81,9 +81,12 @@ class UserController extends Controller
 
 
         return response()->json([
-            $user,
-            $pegawai,
-            $role
+            'username' => $user->username,
+            'name' =>$pegawai->name,
+            'phoneNumber' =>$pegawai->phoneNumber,
+            'address' =>$pegawai->address,
+            'salary' =>$pegawai->salary,
+            'namaRole' =>$role->namaRole
         ], 200);
     }
 
