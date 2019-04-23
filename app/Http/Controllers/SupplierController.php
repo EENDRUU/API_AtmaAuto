@@ -75,7 +75,10 @@ class SupplierController extends Controller
             ]);
         }
         else{
-            return response()->json($suppliers,200);
+            return response()->json([
+                $suppliers,
+                'message' => 'success'
+                ]);
 
         }
     }
