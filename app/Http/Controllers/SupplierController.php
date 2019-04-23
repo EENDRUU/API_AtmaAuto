@@ -120,7 +120,7 @@ class SupplierController extends Controller
         if ($updated) {
             return response()->json([
                 'success' => true,
-                'data' => $suppliers,
+                $suppliers,
                 'message' => 'Supplier updated'
             ]);
         } else {
