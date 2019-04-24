@@ -58,6 +58,7 @@ class SparepartController extends Controller
     public function show($kode_sparepart)
     {
         $sparepart=Sparepart::find($kode_sparepart);
+
         if(is_null($sparepart))
         {
             return response()->json([
@@ -76,6 +77,8 @@ class SparepartController extends Controller
     {
         $sparepart=Sparepart::find($kode_sparepart);
 
+
+
         if(is_null($sparepart))
         {
             return response()->json([
@@ -84,9 +87,48 @@ class SparepartController extends Controller
             ]);
         }
 
-        $updated = $sparepart->fill($request->all())
-            ->save();
-
+        if(!is_null($request->kode_sparepart))
+        {
+            $sparepart->kode_sparepart = $request->kode_sparepart;
+        }
+        if(!is_null($request->file('gambarSparepart')))
+        {
+            $gambar = $request->file('gambarSparepart');
+            $extension = $gambar->getClientOriginalExtension();
+            Storage::disk('public')->put($gambar->getFilename().'.'.$extension,  File::get($gambar));
+            $sparepart->mime = $gambar->getClientMimeType();
+            $sparepart->original_filename = $gambar->getClientOriginalName();
+            $sparepart->filename = $gambar->getFilename().'.'.$extension;
+        }
+        if(!is_null( $request->hargaBeli))
+        {
+            $sparepart->hargaBeli = $request->hargaBeli;
+        }
+        if(!is_null( $request->hargaJual))
+        {
+            $sparepart->hargaJual = $request->hargaJual;
+        }
+        if(!is_null( $request->kodeTempat))
+        {
+            $sparepart->kodeTempat = $request->kodeTempat;
+        }
+        if(!is_null( $request->stok))
+        {
+            $sparepart->stok = $request->stok;
+        }
+        if(!is_null($request->merek))
+        {
+            $sparepart->merek = $request->merek;
+        }
+        if(!is_null($request->tipe))
+        {
+            $sparepart->tipe = $request->tipe;
+        }
+        if(!is_null($request->namaSparepart))
+        {
+            $sparepart->namaSparepart = $request->namaSparepart;
+        }
+        $saved = $sparepart->save();
         if ($updated) {
             return response()->json([
                 'success' => true,
