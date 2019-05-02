@@ -64,14 +64,14 @@ class SupplierController extends Controller
      * @param  \App\Supplier  $supplier
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($namaSupplier)
     {
-        $suppliers = Supplier::find($id);
+        $suppliers = Supplier::find($namaSupplier);
         if(is_null($suppliers))
         {
             return response()->json([
                 'success' => false,
-                'message' => 'Sorry, supplier with id: ' . $id . ' cannot be found'
+                'message' => 'Sorry, supplier with nama: ' . $namaSupplier . ' cannot be found'
             ]);
         }
         else{
