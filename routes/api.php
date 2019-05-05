@@ -16,3 +16,10 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+///Route Jasa Service
+Route::get('/jasaService', 'JasaServiceController@index');
+Route::get('/jasaService/{id}', 'JasaServiceController@show');
+Route::post('/jasaService', 'JasaServiceController@store');
+Route::post('/jasaService/{id}', 'JasaServiceController@update');
+Route::delete('/jasaService/{id}', 'JasaServiceController@destroy');
