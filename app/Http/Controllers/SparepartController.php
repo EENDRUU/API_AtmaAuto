@@ -19,22 +19,31 @@ class SparepartController extends Controller
         return Sparepart::all();
     }
 
+    public function getSparepartStokKurang()
+    {
+        return Sparepart::where('STOK','<=',10)->get();
+    }
+
     public function store(Request $request)
     {
 
         $gambar = $request->file('gambarSparepart');
-        $extension = $gambar->getClientOriginalExtension();
-        Storage::disk('public')->put($gambar->getFilename().'.'.$extension,  File::get($gambar));
 
         $sparepart = new Sparepart();
         $sparepart->KODE_SPAREPART = $request->KODE_SPAREPART;
-        $sparepart->mime = $gambar->getClientMimeType();
-        $sparepart->original_filename = $gambar->getClientOriginalName();
-        $sparepart->filename = $gambar->getFilename().'.'.$extension;
+        if($gambar!=null)
+        {
+            $extension = $gambar->getClientOriginalExtension();
+            Storage::disk('public')->put($gambar->getFilename().'.'.$extension,  File::get($gambar));
+            $sparepart->mime = $gambar->getClientMimeType();
+            $sparepart->original_filename = $gambar->getClientOriginalName();
+            $sparepart->filename = $gambar->getFilename().'.'.$extension;
+        }
         $sparepart->HARGABELI = $request->HARGABELI;
         $sparepart->HARGAJUAL = $request->HARGAJUAL;
         $sparepart->KODETEMPAT = $request->KODETEMPAT;
         $sparepart->STOK = $request->STOK;
+        $sparepart->STOKMINIMAL = $request->STOKMINIMAL;
         $sparepart->MEREK = $request->MEREK;
         $sparepart->TIPE = $request->TIPE;
         $sparepart->NAMASPAREPART = $request->NAMASPAREPART;
@@ -115,6 +124,10 @@ class SparepartController extends Controller
         if(!is_null( $request->STOK))
         {
             $sparepart->STOK = $request->STOK;
+        }
+        if(!is_null( $request->STOKMINIMAL))
+        {
+            $sparepart->STOKMINIMAL = $request->STOKMINIMAL;
         }
         if(!is_null($request->MEREK))
         {

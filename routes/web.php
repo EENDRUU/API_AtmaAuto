@@ -27,6 +27,7 @@ Route::group(['middleware' => ['jwt.verify']], function() {
     Route::post('/sparepart', 'SparepartController@store');
     Route::post('/sparepart/{KODE_SPAREPART}', 'SparepartController@update');
     Route::delete('/sparepart/{KODE_SPAREPART}', 'SparepartController@destroy');
+    Route::get('/getStok', 'SparepartController@getSparepartStokKurang');
 
     ///Route Supplier
     Route::get('/supplier', 'SupplierController@index');

@@ -99,9 +99,9 @@ class SupplierController extends Controller
      * @param  \App\Supplier  $supplier
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $ID_SUPPLIER )
+    public function update(Request $request, $ID_SUPPLIER)
     {
-        $suppliers = Supplier::find($ID_SUPPLIER );
+        $suppliers = Supplier::find($ID_SUPPLIER);
 
         if(is_null($suppliers))
         {

@@ -14,6 +14,6 @@ class Sparepart extends Model
     protected $fillable = [
         'HARGABELI', 'HARGAJUAL',
         'KODETEMPAT', 'STOK','MEREK',
-        'TIPE','NAMASPAREPART'
+        'TIPE','NAMASPAREPART','STOKMINIMAL'
     ];
 }
