@@ -16,7 +16,7 @@ class CreatePegawaisTable extends Migration
         Schema::create('pegawais', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->string('phoneNumber');
+            $table->string('NOMORTELEPON_PEGAWAI');
             $table->string('address');
             $table->double('salary');
             $table->unsignedBigInteger('role_id');

@@ -36,10 +36,11 @@ class SupplierController extends Controller
     public function store(Request $request)
     {
         $suppliers = new Supplier();
-        $suppliers->namaSupplier = $request->namaSupplier;
-        $suppliers->alamatSupplier = $request->alamatSupplier;
-        $suppliers->namaSales = $request->namaSales;
-        $suppliers->nomorTeleponSales = $request->nomorTeleponSales;
+        $suppliers->ID_SUPPLIER = $request->ID_SUPPLIER;
+        $suppliers->NAMASUPPLIER = $request->NAMASUPPLIER;
+        $suppliers->ALAMATSUPPLIER = $request->ALAMATSUPPLIER;
+        $suppliers->NAMASALES = $request->NAMASALES;
+        $suppliers->NOMORTELEPON_SALES = $request->NOMORTELEPON_SALES;
 
         $saved =  $suppliers->save();
 
@@ -64,14 +65,14 @@ class SupplierController extends Controller
      * @param  \App\Supplier  $supplier
      * @return \Illuminate\Http\Response
      */
-    public function show($namaSupplier)
+    public function show($NAMASUPPLIER)
     {
-        $suppliers = Supplier::find($namaSupplier);
+        $suppliers = Supplier::where('NAMASUPPLIER',$NAMASUPPLIER)->first();
         if(is_null($suppliers))
         {
             return response()->json([
                 'success' => false,
-                'message' => 'Sorry, supplier with nama: ' . $namaSupplier . ' cannot be found'
+                'message' => 'Sorry, supplier with nama: ' . $NAMASUPPLIER . ' cannot be found'
             ]);
         }
         else{
@@ -98,15 +99,15 @@ class SupplierController extends Controller
      * @param  \App\Supplier  $supplier
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $ID_SUPPLIER )
     {
-        $suppliers = Supplier::find($id);
+        $suppliers = Supplier::find($ID_SUPPLIER );
 
         if(is_null($suppliers))
         {
             return response()->json([
                 'success' => false,
-                'message' => 'Sorry, supplier with id: ' . $id . ' cannot be found'
+                'message' => 'Sorry, supplier with ID_SUPPLIER : ' . $ID_SUPPLIER  . ' cannot be found'
             ]);
         }
 
@@ -134,14 +135,14 @@ class SupplierController extends Controller
      * @param  \App\Supplier  $supplier
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($ID_SUPPLIER )
     {
-        $suppliers=Supplier::find($id);
+        $suppliers=Supplier::find($ID_SUPPLIER );
         if(is_null($suppliers))
         {
             return response()->json([
                 'success' => false,
-                'message' => 'Sorry, supplier with id: ' . $id . ' cannot be found'
+                'message' => 'Sorry, supplier with ID_SUPPLIER : ' . $ID_SUPPLIER  . ' cannot be found'
             ]);
         }
 

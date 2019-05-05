@@ -25,7 +25,7 @@ class RegisterAuthRequest extends FormRequest
     {
         return [
             'username' => 'required|string',
-            'id_pegawai' => 'required|string',
+            'ID_PEGAWAI' => 'required|string',
             'password' => 'required|string|min:6|max:10'
         ];
     }

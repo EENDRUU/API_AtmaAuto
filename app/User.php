@@ -10,13 +10,18 @@ class User extends Authenticatable implements JWTSubject
 {
     use Notifiable;
 
+    protected $table = 'akun';
+    protected $primaryKey = 'username';
+    public $timestamps = false;
+    public $incrementing = false;
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'username', 'password','id_pegawai'
+        'username', 'password','ID_PEGAWAI'
     ];
 
     /**

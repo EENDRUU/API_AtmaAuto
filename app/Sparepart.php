@@ -6,12 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Sparepart extends Model
 {
-    protected $primaryKey = 'kode_sparepart';
+    protected $table = 'sparepart';
+    public $timestamps = false;
+    protected $primaryKey = 'KODE_SPAREPART';
     public $incrementing = false;
 
     protected $fillable = [
-        'hargaBeli', 'hargaJual',
-        'kodeTempat', 'stok','merek',
-        'tipe','namaSparepart'
+        'HARGABELI', 'HARGAJUAL',
+        'KODETEMPAT', 'STOK','MEREK',
+        'TIPE','NAMASPAREPART'
     ];
 }

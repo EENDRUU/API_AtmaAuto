@@ -13,15 +13,15 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('akun', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('username')->unique();
             $table->string('password');
-            $table->unsignedBigInteger('id_pegawai');
+            $table->unsignedBigInteger('ID_PEGAWAI');
             $table->rememberToken();
             $table->timestamps();
 
-            $table->foreign('id_pegawai')
+            $table->foreign('ID_PEGAWAI')
             ->references('id')->on('pegawais')
             ->onDelete('cascade');
         });
@@ -34,6 +34,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('akun');
     }
 }

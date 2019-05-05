@@ -16,7 +16,7 @@ class CreatePelanggansTable extends Migration
         Schema::create('pelanggans', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->string('phoneNumber')->unique();
+            $table->string('NOMORTELEPON_PEGAWAI')->unique();
             $table->string('address');
             $table->string('city');
             $table->timestamps();

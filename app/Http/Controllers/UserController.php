@@ -26,7 +26,7 @@ class UserController extends Controller
     {
         $user = new User();
         $user->username = $request->username;
-        $user->id_pegawai = $request->id_pegawai;
+        $user->ID_PEGAWAI = $request->ID_PEGAWAI;
         $user->password = bcrypt($request->password);
         $user->save();
 
@@ -44,8 +44,9 @@ class UserController extends Controller
         if (! $token = auth()->attempt($credentials)) {
             return response()->json([
                 'error' => 'Unauthorized',
-                'message' => 'Username or Password invalid'
+                'message' => 'username or password invalid'
             ]);
+            // return $this->respondWithToken($token);
         }
         else{
             return $this->respondWithToken($token);
@@ -76,17 +77,17 @@ class UserController extends Controller
     {
         $token = JWTAuth::getToken();
         $user = JWTAuth::toUser($token);
-        $pegawai=Pegawai::find($user->id_pegawai);
-        $role=Role::find($pegawai->role_id);
+        $pegawai=Pegawai::find($user->ID_PEGAWAI);
+        $role=Role::find($pegawai->ID_ROLE);
 
 
         return response()->json([
             'username' => $user->username,
-            'name' =>$pegawai->name,
-            'phoneNumber' =>$pegawai->phoneNumber,
-            'address' =>$pegawai->address,
-            'salary' =>$pegawai->salary,
-            'namaRole' =>$role->namaRole
+            'NAMA_PEGAWAI' =>$pegawai->NAMA_PEGAWAI,
+            'NOMORTELEPON_PEGAWAI' =>$pegawai->NOMORTELEPON_PEGAWAI,
+            'ALAMAT' =>$pegawai->ALAMAT,
+            'GAJI' =>$pegawai->GAJI,
+            'NAMA_ROLE' =>$role->NAMA_ROLE
         ], 200);
     }
 

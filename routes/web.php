@@ -23,17 +23,17 @@ Route::group(['middleware' => ['jwt.verify']], function() {
 
     ///Route Sparepart
     Route::get('/sparepart', 'SparepartController@index');
-    Route::get('/sparepart/{kode_sparepart}', 'SparepartController@show');
+    Route::get('/sparepart/{KODE_SPAREPART}', 'SparepartController@show');
     Route::post('/sparepart', 'SparepartController@store');
-    Route::post('/sparepart/{kode_sparepart}', 'SparepartController@update');
-    Route::delete('/sparepart/{kode_sparepart}', 'SparepartController@destroy');
+    Route::post('/sparepart/{KODE_SPAREPART}', 'SparepartController@update');
+    Route::delete('/sparepart/{KODE_SPAREPART}', 'SparepartController@destroy');
 
     ///Route Supplier
     Route::get('/supplier', 'SupplierController@index');
-    Route::get('/supplier/{namaSupplier}', 'SupplierController@show');
+    Route::get('/supplier/{NAMASUPPLIER}', 'SupplierController@show');
     Route::post('/supplier', 'SupplierController@store');
-    Route::post('/supplier/{id}', 'SupplierController@update');
-    Route::delete('/supplier/{id}', 'SupplierController@destroy');
+    Route::post('/supplier/{ID_SUPPLIER}', 'SupplierController@update');
+    Route::delete('/supplier/{ID_SUPPLIER}', 'SupplierController@destroy');
 
 
 

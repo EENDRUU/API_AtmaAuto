@@ -27,17 +27,17 @@ class SparepartController extends Controller
         Storage::disk('public')->put($gambar->getFilename().'.'.$extension,  File::get($gambar));
 
         $sparepart = new Sparepart();
-        $sparepart->kode_sparepart = $request->kode_sparepart;
+        $sparepart->KODE_SPAREPART = $request->KODE_SPAREPART;
         $sparepart->mime = $gambar->getClientMimeType();
         $sparepart->original_filename = $gambar->getClientOriginalName();
         $sparepart->filename = $gambar->getFilename().'.'.$extension;
-        $sparepart->hargaBeli = $request->hargaBeli;
-        $sparepart->hargaJual = $request->hargaJual;
-        $sparepart->kodeTempat = $request->kodeTempat;
-        $sparepart->stok = $request->stok;
-        $sparepart->merek = $request->merek;
-        $sparepart->tipe = $request->tipe;
-        $sparepart->namaSparepart = $request->namaSparepart;
+        $sparepart->HARGABELI = $request->HARGABELI;
+        $sparepart->HARGAJUAL = $request->HARGAJUAL;
+        $sparepart->KODETEMPAT = $request->KODETEMPAT;
+        $sparepart->STOK = $request->STOK;
+        $sparepart->MEREK = $request->MEREK;
+        $sparepart->TIPE = $request->TIPE;
+        $sparepart->NAMASPAREPART = $request->NAMASPAREPART;
         $saved = $sparepart->save();
 
         if ($saved) {
@@ -55,15 +55,15 @@ class SparepartController extends Controller
 
     }
 
-    public function show($kode_sparepart)
+    public function show($KODE_SPAREPART)
     {
-        $sparepart=Sparepart::find($kode_sparepart);
+        $sparepart=Sparepart::find($KODE_SPAREPART);
 
         if(is_null($sparepart))
         {
             return response()->json([
                 'success' => false,
-                'message' => 'Sorry, sparepart with kode sparepart: ' . $kode_sparepart . ' cannot be found'
+                'message' => 'Sorry, sparepart with kode sparepart: ' . $KODE_SPAREPART . ' cannot be found'
             ]);
         }
         else
@@ -73,9 +73,9 @@ class SparepartController extends Controller
 
     }
 
-    public function update(Request $request, $kode_sparepart)
+    public function update(Request $request, $KODE_SPAREPART)
     {
-        $sparepart=Sparepart::find($kode_sparepart);
+        $sparepart=Sparepart::find($KODE_SPAREPART);
 
 
 
@@ -83,13 +83,13 @@ class SparepartController extends Controller
         {
             return response()->json([
                 'success' => false,
-                'message' => 'Sorry, sparepart with kode sparepart: ' . $kode_sparepart . ' cannot be found'
+                'message' => 'Sorry, sparepart with kode sparepart: ' . $KODE_SPAREPART . ' cannot be found'
             ]);
         }
 
-        if(!is_null($request->kode_sparepart))
+        if(!is_null($request->KODE_SPAREPART))
         {
-            $sparepart->kode_sparepart = $request->kode_sparepart;
+            $sparepart->KODE_SPAREPART = $request->KODE_SPAREPART;
         }
         if(!is_null($request->file('gambarSparepart')))
         {
@@ -100,35 +100,35 @@ class SparepartController extends Controller
             $sparepart->original_filename = $gambar->getClientOriginalName();
             $sparepart->filename = $gambar->getFilename().'.'.$extension;
         }
-        if(!is_null( $request->hargaBeli))
+        if(!is_null( $request->HARGABELI))
         {
-            $sparepart->hargaBeli = $request->hargaBeli;
+            $sparepart->HARGABELI = $request->HARGABELI;
         }
-        if(!is_null( $request->hargaJual))
+        if(!is_null( $request->HARGAJUAL))
         {
-            $sparepart->hargaJual = $request->hargaJual;
+            $sparepart->HARGAJUAL = $request->HARGAJUAL;
         }
-        if(!is_null( $request->kodeTempat))
+        if(!is_null( $request->KODETEMPAT))
         {
-            $sparepart->kodeTempat = $request->kodeTempat;
+            $sparepart->KODETEMPAT = $request->KODETEMPAT;
         }
-        if(!is_null( $request->stok))
+        if(!is_null( $request->STOK))
         {
-            $sparepart->stok = $request->stok;
+            $sparepart->STOK = $request->STOK;
         }
-        if(!is_null($request->merek))
+        if(!is_null($request->MEREK))
         {
-            $sparepart->merek = $request->merek;
+            $sparepart->MEREK = $request->MEREK;
         }
-        if(!is_null($request->tipe))
+        if(!is_null($request->TIPE))
         {
-            $sparepart->tipe = $request->tipe;
+            $sparepart->TIPE = $request->TIPE;
         }
-        if(!is_null($request->namaSparepart))
+        if(!is_null($request->NAMASPAREPART))
         {
-            $sparepart->namaSparepart = $request->namaSparepart;
+            $sparepart->NAMASPAREPART = $request->NAMASPAREPART;
         }
-        $saved = $sparepart->save();
+        $updated = $sparepart->save();
         if ($updated) {
             return response()->json([
                 'success' => true,
@@ -144,14 +144,14 @@ class SparepartController extends Controller
     }
 
 
-    public function destroy($kode_sparepart)
+    public function destroy($KODE_SPAREPART)
     {
-        $sparepart=Sparepart::find($kode_sparepart);
+        $sparepart=Sparepart::find($KODE_SPAREPART);
         if(is_null($sparepart))
         {
             return response()->json([
                 'success' => false,
-                'message' => 'Sorry, sparepart with kode sparepart: ' . $kode_sparepart . ' cannot be found'
+                'message' => 'Sorry, sparepart with kode sparepart: ' . $KODE_SPAREPART . ' cannot be found'
             ]);
         }
 
