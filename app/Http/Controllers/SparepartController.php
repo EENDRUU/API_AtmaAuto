@@ -21,7 +21,7 @@ class SparepartController extends Controller
 
     public function getSparepartStokKurang()
     {
-        return Sparepart::where('STOK','<=',10)->get();
+        return Sparepart::whereColumn('STOK','<=','STOKMINIMAL')->get();
     }
 
     public function store(Request $request)
