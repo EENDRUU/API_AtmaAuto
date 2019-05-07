@@ -48,7 +48,7 @@ Route::group(['middleware' => ['jwt.verify']], function() {
     Route::get('/detilTP/{ID_DETILPEMESANAN}', 'DetilTransaksiPengadaanController@show');
     Route::post('/detilTP', 'DetilTransaksiPengadaanController@store');
     Route::post('/detilTP/{ID_DETILPEMESANAN}', 'DetilTransaksiPengadaanController@update');
-    Route::delete('/detilTP/{ID_DETILPEMESANANDetilTransaksiPengadaanController}', 'DetilTransaksiPengadaanController@destroy');
+    Route::delete('/detilTP/{ID_DETILPEMESANAN}', 'DetilTransaksiPengadaanController@destroy');
 
 
 });
