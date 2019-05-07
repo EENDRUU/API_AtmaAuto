@@ -44,11 +44,11 @@ Route::group(['middleware' => ['jwt.verify']], function() {
     Route::delete('/transaksiPemesanan/{ID_PESANAN}', 'TransaksiPengadaanController@destroy');
 
     ///Route Detil Transaksi Pemesanan
-    Route::get('/detilTransaksiPemesanan', 'DetilTransaksiPengadaanController@index');
-    Route::get('/detilTransaksiPemesanan/{ID_DETILPEMESANAN}', 'DetilTransaksiPengadaanController@show');
-    Route::post('/detilTransaksiPemesanan', 'DetilTransaksiPengadaanController@store');
-    Route::post('/detilTransaksiPemesanan/{ID_DETILPEMESANAN}', 'DetilTransaksiPengadaanController@update');
-    Route::delete('/detilTransaksiPemesanan/{ID_DETILPEMESANANDetilTransaksiPengadaanController}', 'DetilTransaksiPengadaanController@destroy');
+    Route::get('/detilTP', 'DetilTransaksiPengadaanController@index');
+    Route::get('/detilTP/{ID_DETILPEMESANAN}', 'DetilTransaksiPengadaanController@show');
+    Route::post('/detilTP', 'DetilTransaksiPengadaanController@store');
+    Route::post('/detilTP/{ID_DETILPEMESANAN}', 'DetilTransaksiPengadaanController@update');
+    Route::delete('/detilTP/{ID_DETILPEMESANANDetilTransaksiPengadaanController}', 'DetilTransaksiPengadaanController@destroy');
 
 
 });
