@@ -45,7 +45,8 @@ class TransaksiPengadaanController extends Controller
         $pemesanan->ID_PESANAN = $request->ID_PESANAN;
         $pemesanan->ID_SUPPLIER = $request->ID_SUPPLIER;
         $pemesanan->TANGGALPEMESANAN = $request->TANGGALPEMESANAN;
-        $pemesanan->TOTALBIAYAPEMESANAN = $request->STATUS;
+        $pemesanan->TOTALBIAYAPEMESANAN = $request->TOTALBIAYAPEMESANAN;
+        $pemesanan->STATUS = $request->STATUS;
 
         $saved =  $pemesanan->save();
 
