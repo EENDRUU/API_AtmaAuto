@@ -74,7 +74,7 @@ class DetilTransaksiPengadaanController extends Controller
     public function show($ID_PESANAN)
     {
         $detil = DetilTransaksiPengadaan::where('ID_PESANAN',$ID_PESANAN)->get();
-        if(is_null($detil))
+        if(sizeof($detil)==0)
         {
             return response()->json([
                 'success' => false,
