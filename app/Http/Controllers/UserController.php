@@ -82,6 +82,7 @@ class UserController extends Controller
 
 
         return response()->json([
+            'ID_PEGAWAI'=>$pegawai->ID_PEGAWAI,
             'username' => $user->username,
             'NAMA_PEGAWAI' =>$pegawai->NAMA_PEGAWAI,
             'NOMORTELEPON_PEGAWAI' =>$pegawai->NOMORTELEPON_PEGAWAI,
