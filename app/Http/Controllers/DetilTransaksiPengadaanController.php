@@ -71,14 +71,14 @@ class DetilTransaksiPengadaanController extends Controller
      * @param  \App\DetilTransaksiPengadaan  $detilTransaksiPengadaan
      * @return \Illuminate\Http\Response
      */
-    public function show($id_detilPemesanan)
+    public function show($ID_PESANAN)
     {
-        $detil = DetilTransaksiPengadaan::find($id_detilPemesanan);
+        $detil = Supplier::where('ID_PESANAN',$ID_PESANAN)->get();
         if(is_null($detil))
         {
             return response()->json([
                 'success' => false,
-                'message' => 'Sorry, Detil Transaksi Pemesanan with nama: ' . $id_detilPemesanan . ' cannot be found'
+                'message' => 'Sorry, supplier with id pesanan: ' . $ID_PESANAN . ' cannot be found'
             ]);
         }
         else{
@@ -86,6 +86,8 @@ class DetilTransaksiPengadaanController extends Controller
 
         }
     }
+
+
 
     /**
      * Show the form for editing the specified resource.
