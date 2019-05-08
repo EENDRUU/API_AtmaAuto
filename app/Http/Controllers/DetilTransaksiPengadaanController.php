@@ -61,7 +61,7 @@ class DetilTransaksiPengadaanController extends Controller
             return response()->json([
                 'success' => false,
                 'message' => 'Failed, Adding Detil Transaksi Pemesanan'
-            ], 500);
+            ]);
         }
     }
 
