@@ -50,6 +50,44 @@ Route::group(['middleware' => ['jwt.verify']], function() {
     Route::post('/detilTP/{ID_DETILPEMESANAN}', 'DetilTransaksiPengadaanController@update');
     Route::delete('/detilTP/{ID_DETILPEMESANAN}', 'DetilTransaksiPengadaanController@destroy');
 
+    ///Route Transaksi Penjualan
+    Route::get('/transaksiPenjualan', 'TransaksiPenjualanController@index');
+    Route::get('/transaksiPenjualan/{NOMOR_TRANSAKSI}', 'TransaksiPenjualanController@show');
+    Route::post('/transaksiPenjualan', 'TransaksiPenjualanController@store');
+    Route::post('/transaksiPenjualan/{NOMOR_TRANSAKSI}', 'TransaksiPenjualanController@update');
+    Route::delete('/transaksiPenjualan/{NOMOR_TRANSAKSI}', 'TransaksiPenjualanController@destroy');
+
+     ///Route Detil Transaksi Penjualan Jasa
+     Route::get('/detilTJ', 'DetilTransaksiPenjualanJasaController@index');
+     Route::get('/detilTJ/{NOMOR_TRANSAKSI}', 'DetilTransaksiPenjualanJasaController@show');
+     Route::post('/detilTJ', 'DetilTransaksiPenjualanJasaController@store');
+     Route::post('/detilTJ/{ID_DETAILPENJUALANJASA}', 'DetilTransaksiPenjualanJasaController@update');
+     Route::delete('/detilTJ/{ID_DETAILPENJUALANJASA}', 'DetilTransaksiPenjualanJasaController@destroy');
+
+      ///Route Detil Transaksi Penjualan Sparepart
+      Route::get('/detilTS', 'DetilTransaksiPenjualanSparepartController@index');
+      Route::get('/detilTS/{NOMOR_TRANSAKSI}', 'DetilTransaksiPenjualanSparepartController@show');
+      Route::post('/detilTS', 'DetilTransaksiPenjualanSparepartController@store');
+      Route::post('/detilTS/{ID_DETAILPENJUALANSPAREPART}', 'DetilTransaksiPenjualanSparepartController@update');
+      Route::delete('/detilTS/{ID_DETAILPENJUALANSPAREPART}', 'DetilTransaksiPenjualanSparepartController@destroy');
+
+
+    ///Route Konsumen
+    Route::get('/konsumen', 'KonsumenController@index');
+    // Route::get('/supplier/{NAMASUPPLIER}', 'SupplierController@show');
+    Route::post('/konsumen', 'KonsumenController@store');
+    // Route::post('/supplier/{ID_SUPPLIER}', 'SupplierController@update');
+    // Route::delete('/supplier/{ID_SUPPLIER}', 'SupplierController@destroy');
+
+     ///Route Kendaraan Konsumen
+     Route::get('/kendaraan', 'KendaraanPelangganController@index');
+     // Route::get('/supplier/{NAMASUPPLIER}', 'SupplierController@show');
+     Route::post('/kendaraan', 'KendaraanPelangganController@store');
+     // Route::post('/supplier/{ID_SUPPLIER}', 'SupplierController@update');
+     // Route::delete('/supplier/{ID_SUPPLIER}', 'SupplierController@destroy');
+
+
+
 
 });
 

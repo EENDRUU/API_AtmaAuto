@@ -2,10 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\KendaraanPelanggan;
+use App\Konsumen;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use App\Http\Requests\RegisterAuthRequest;
+use Tymon\JWTAuth\Facades\JWTAuth;
+use Tymon\JWTAuth\Exceptions\JWTException;
 
-class KendaraanPelangganController extends Controller
+class KonsumenController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +19,7 @@ class KendaraanPelangganController extends Controller
      */
     public function index()
     {
-        return KendaraanPelanggan::all();
+        return Konsumen::all();
     }
 
     /**
@@ -35,34 +40,38 @@ class KendaraanPelangganController extends Controller
      */
     public function store(Request $request)
     {
-        $kendaraanPelanggan = new KendaraanPelanggan();
-        $kendaraanPelanggan->NOMORPOLISI = $request->NOMORPOLISI;
-        $kendaraanPelanggan->IDMEREK = $request->IDMEREK;
-        $kendaraanPelanggan->IDTIPE = $request->IDTIPE;
 
-        $saved =  $kendaraanPelanggan->save();
+        $konsumen = new Konsumen();
+        $konsumen->ID_KONSUMEN = $request->ID_KONSUMEN;
+        $konsumen->NAMAKONSUMEN = $request->NAMAKONSUMEN;
+        $konsumen->ALAMATKONSUMEN = $request->ALAMATKONSUMEN;
+        $konsumen->NOMORTELEPON_KONSUMEN = $request->NOMORTELEPON_KONSUMEN;
+
+        $saved =  $konsumen->save();
 
         if ($saved) {
             return response()->json([
                 'success' => true,
-                'data' => $kendaraanPelanggan,
-                'message' => 'Success Adding kendaraan'
+                'data' => $konsumen,
+                'message' => 'Success Adding  Konsumen'
             ]);
         } else {
             return response()->json([
                 'success' => false,
-                'message' => 'Failed, Adding kendaraan'
+                'message' => 'Failed, Adding  Konsumen'
             ]);
         }
+
+
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\KendaraanPelanggan  $kendaraanPelanggan
+     * @param  \App\Konsumen  $konsumen
      * @return \Illuminate\Http\Response
      */
-    public function show(KendaraanPelanggan $kendaraanPelanggan)
+    public function show(Konsumen $konsumen)
     {
         //
     }
@@ -70,10 +79,10 @@ class KendaraanPelangganController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\KendaraanPelanggan  $kendaraanPelanggan
+     * @param  \App\Konsumen  $konsumen
      * @return \Illuminate\Http\Response
      */
-    public function edit(KendaraanPelanggan $kendaraanPelanggan)
+    public function edit(Konsumen $konsumen)
     {
         //
     }
@@ -82,10 +91,10 @@ class KendaraanPelangganController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\KendaraanPelanggan  $kendaraanPelanggan
+     * @param  \App\Konsumen  $konsumen
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, KendaraanPelanggan $kendaraanPelanggan)
+    public function update(Request $request, Konsumen $konsumen)
     {
         //
     }
@@ -93,10 +102,10 @@ class KendaraanPelangganController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\KendaraanPelanggan  $kendaraanPelanggan
+     * @param  \App\Konsumen  $konsumen
      * @return \Illuminate\Http\Response
      */
-    public function destroy(KendaraanPelanggan $kendaraanPelanggan)
+    public function destroy(Konsumen $konsumen)
     {
         //
     }
