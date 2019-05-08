@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\DetilTransaksiPengadaan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use App\Http\Requests\RegisterAuthRequest;
 use Tymon\JWTAuth\Facades\JWTAuth;
 use Tymon\JWTAuth\Exceptions\JWTException;
@@ -73,7 +74,10 @@ class DetilTransaksiPengadaanController extends Controller
      */
     public function show($ID_PESANAN)
     {
-        $detil = DetilTransaksiPengadaan::where('ID_PESANAN',$ID_PESANAN)->get();
+        $detil = DB::table('detail_transaksipemesanan')
+        ->join('sparepart','detail_transaksipemesanan.KODE_SPAREPART','=','sparepart.KODE_SPAREPART')
+        ->select('detail_transaksipemesanan.*','sparepart.NAMASPAREPART')
+        ->get();
         if(sizeof($detil)==0)
         {
             return response()->json([

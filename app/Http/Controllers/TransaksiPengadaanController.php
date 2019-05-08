@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\TransaksiPengadaan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use App\Http\Requests\RegisterAuthRequest;
 use Tymon\JWTAuth\Facades\JWTAuth;
 use Tymon\JWTAuth\Exceptions\JWTException;
@@ -19,7 +20,11 @@ class TransaksiPengadaanController extends Controller
      */
     public function index()
     {
-        return TransaksiPengadaan::all();
+        $transaksiPengadaan = DB::table('transaksi_pemesanan_sparepart')
+        ->join('supplier','transaksi_pemesanan_sparepart.ID_SUPPLIER','=','supplier.ID_SUPPLIER')
+        ->select('transaksi_pemesanan_sparepart.*','supplier.NAMASUPPLIER')
+        ->get();
+        return $transaksiPengadaan;
     }
 
     /**
