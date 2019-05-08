@@ -77,6 +77,7 @@ class DetilTransaksiPengadaanController extends Controller
         $detil = DB::table('detail_transaksipemesanan')
         ->join('sparepart','detail_transaksipemesanan.KODE_SPAREPART','=','sparepart.KODE_SPAREPART')
         ->select('detail_transaksipemesanan.*','sparepart.NAMASPAREPART')
+        ->where('detail_transaksipemesanan.ID_PESANAN','=',$ID_PESANAN)
         ->get();
         if(sizeof($detil)==0)
         {
