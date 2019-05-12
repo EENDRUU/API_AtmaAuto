@@ -71,6 +71,13 @@ Route::group(['middleware' => ['jwt.verify']], function() {
       Route::post('/detilTS/{ID_DETAILPENJUALANSPAREPART}', 'DetilTransaksiPenjualanSparepartController@update');
       Route::delete('/detilTS/{ID_DETAILPENJUALANSPAREPART}', 'DetilTransaksiPenjualanSparepartController@destroy');
 
+      ///Route Jasa Service
+    Route::get('/jasaService', 'JasaServiceController@index');
+    Route::get('/jasaService/{ID_JASA}', 'JasaServiceController@show');
+    Route::post('/jasaService', 'JasaServiceController@store');
+    Route::post('/jasaService/{ID_JASA}', 'JasaServiceController@update');
+    Route::delete('/jasaService/{ID_JASA}', 'JasaServiceController@destroy');
+
 
     ///Route Konsumen
     Route::get('/konsumen', 'KonsumenController@index');
