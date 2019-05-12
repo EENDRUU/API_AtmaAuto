@@ -4,6 +4,11 @@ namespace App\Http\Controllers;
 
 use App\KendaraanPelanggan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use App\Http\Requests\RegisterAuthRequest;
+use Tymon\JWTAuth\Facades\JWTAuth;
+use Tymon\JWTAuth\Exceptions\JWTException;
 
 class KendaraanPelangganController extends Controller
 {
@@ -19,7 +24,7 @@ class KendaraanPelangganController extends Controller
         ->join('merekkendaraan','kendaraankonsumen.IDMEREK','=','merekkendaraan.IDMEREK')
         ->select('kendaraankonsumen.*','tipekendaraan.NAMATIPE','merekkendaraan.NAMAMEREK')
         ->get();
-        return KendaraanPelanggan::all();
+        return $kendaraanPelanggan;
     }
 
     /**
