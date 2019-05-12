@@ -14,6 +14,11 @@ class KendaraanPelangganController extends Controller
      */
     public function index()
     {
+        $kendaraanPelanggan = DB::table('kendaraankonsumen')
+        ->join('tipekendaraan','kendaraankonsumen.IDTIPE','=','tipekendaraan.IDTIPE')
+        ->join('merekkendaraan','kendaraankonsumen.IDMEREK','=','merekkendaraan.IDMEREK')
+        ->select('kendaraankonsumen.*','tipekendaraan.NAMATIPE','merekkendaraan.NAMAMEREK')
+        ->get();
         return KendaraanPelanggan::all();
     }
 
