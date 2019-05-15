@@ -28,3 +28,5 @@ Route::delete('/jasaService/{ID_JASA}', 'JasaServiceController@destroy');
  Route::get('/konsumenSparepart', 'SparepartController@index');
  Route::get('/sortByPrice', 'SparepartController@sortbyPrice');
  Route::get('/sortByStok', 'SparepartController@sortbyStok');
+
+ Route::get('/riwayat/{NOMORTELEPON_KONSUMEN}/{NOMORPOLISI}', 'TransaksiPenjualanController@riwayatTransaksiKonsumen');
