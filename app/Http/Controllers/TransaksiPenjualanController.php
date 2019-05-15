@@ -34,7 +34,7 @@ class TransaksiPenjualanController extends Controller
         ->join('detail_transaksi_penjualanjasa', 'transaksi_penjualan.NOMOR_TRANSAKSI','=', 'detail_transaksi_penjualanjasa.NOMOR_TRANSAKSI')
         ->join('detail_transaksi_penjualanspar', 'transaksi_penjualan.NOMOR_TRANSAKSI','=', 'detail_transaksi_penjualanspar.NOMOR_TRANSAKSI')
         ->join('konsumen','transaksi_penjualan.ID_KONSUMEN','=','konsumen.ID_KONSUMEN')
-        ->select('transaksi_penjualan.*','detail_transaksi_penjualanjasa.*','detail_transaksi_penjualanspar','konsumen.*')
+        ->select('transaksi_penjualan.*','detail_transaksi_penjualanjasa.*','detail_transaksi_penjualanspar.*','konsumen.*')
         ->where('konsumen.NOMORTELEPON_KONSUMEN','=',$nomorTelepon)
         ->where('detail_transaksi_penjualanjasa.NOMORPOLISI','=',$nomorPolisi)
         ->get();
