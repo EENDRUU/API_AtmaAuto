@@ -94,6 +94,9 @@ Route::group(['middleware' => ['jwt.verify']], function() {
      // Route::delete('/supplier/{ID_SUPPLIER}', 'SupplierController@destroy');
 
 
+     //log
+     Route::get('/log', 'LogController@index');
+    Route::post('/log', 'LogController@store');
 
 
 });
