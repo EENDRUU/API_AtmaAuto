@@ -27,14 +27,15 @@ class TransaksiPenjualanController extends Controller
         return $transaksiPenjualan;
     }
 
-    public function riwayatTransaksiKonsumen(Request $request)
+    public function riwayatTransaksiKonsumen($nomorPolisi, $nomorTelepon)
     {
+
         $transaksiPenjualan = DB::table('transaksi_penjualan')
         ->join('detail_transaksi_penjualanjasa', 'transaksi_penjualan.NOMOR_TRANSAKSI','=', 'detail_transaksi_penjualanjasa.NOMOR_TRANSAKSI')
         ->join('konsumen','transaksi_penjualan.ID_KONSUMEN','=','konsumen.ID_KONSUMEN')
         ->select('transaksi_penjualan.*','detail_transaksi_penjualanjasa.*','konsumen.NAMAKONSUMEN')
-        ->where('konsumen.NOMORTELEPON_KONSUMEN','=', $request->NOMORTELEPON_KONSUMEN)
-        ->where('detail_transaksi_penjualanjasa.NOMORPOLISI','=',$request->NOMORPOLISI)
+        ->where('konsumen.NOMORTELEPON_KONSUMEN','=',$nomorTelepon)
+        ->where('detail_transaksi_penjualanjasa.NOMORPOLISI','=',$nomorPolisi)
         ->get();
         return $transaksiPenjualan;
     }
