@@ -19,6 +19,21 @@ class SparepartController extends Controller
         return Sparepart::all();
     }
 
+    public function sortbyStok()
+    {
+        $sparepart = Sparepart::all();
+        $sparepart = Sparepart::orderBy('STOK','asc')->get();
+
+        return $sparepart;
+    }
+    public function sortbyPrice()
+    {
+        $sparepart = Sparepart::all();
+        $sparepart = Sparepart::orderBy('HARGAJUAL','asc')->get();
+
+        return $sparepart;
+    }
+
     public function getSparepartStokKurang()
     {
         return Sparepart::whereColumn('STOK','<=','STOKMINIMAL')->get();

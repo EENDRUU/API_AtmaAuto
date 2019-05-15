@@ -24,3 +24,7 @@ Route::post('/jasaService', 'JasaServiceController@store');
 Route::post('/jasaService/{ID_JASA}', 'JasaServiceController@update');
 Route::delete('/jasaService/{ID_JASA}', 'JasaServiceController@destroy');
  Route::get('/getStok', 'SparepartController@getSparepartStokKurang');
+
+ Route::get('/konsumenSparepart', 'SparepartController@index');
+ Route::get('/sortByPrice', 'SparepartController@sortbyPrice');
+ Route::get('/sortByStok', 'SparepartController@sortbyStok');
