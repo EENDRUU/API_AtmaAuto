@@ -35,7 +35,7 @@ class SupplierController extends Controller
      */
     public function store(Request $request)
     {
-         $string = str_random(8);
+         $string = str_random(4);
         $suppliers = new Supplier();
         $suppliers->ID_SUPPLIER='sup-'.$string;
 
