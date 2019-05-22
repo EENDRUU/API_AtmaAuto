@@ -54,7 +54,7 @@ class SupplierController extends Controller
             return response()->json([
                 'success' => false,
                 'message' => 'Failed, Adding Supplier'
-            ], 500);
+            ]);
         }
 
     }

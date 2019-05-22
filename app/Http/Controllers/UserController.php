@@ -45,7 +45,7 @@ class UserController extends Controller
             return response()->json([
                 'error' => 'Unauthorized',
                 'message' => 'username or password invalid'
-            ]);
+            ],200);
             // return $this->respondWithToken($token);
         }
         else{
