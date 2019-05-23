@@ -37,6 +37,7 @@ class TransaksiPenjualanController extends Controller
         ->select('transaksi_penjualan.*')
         ->where('konsumen.NOMORTELEPON_KONSUMEN','=',$nomorTelepon)
         ->where('detail_transaksi_penjualanjasa.NOMORPOLISI','=',$nomorPolisi)
+        ->groupBy('transaksi_penjualan.NOMOR_TRANSAKSI')
         ->get();
         return $transaksiPenjualan;
     }
