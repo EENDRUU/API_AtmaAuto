@@ -37,8 +37,9 @@ class JasaServiceController extends Controller
      */
     public function store(Request $request)
     {
+        $string = str_random(4);
         $jasa = new JasaService;
-        $jasa->ID_JASA = $request->ID_JASA;
+        $jasa->ID_JASA = 'jas-'.$string;
         $jasa->NAMAJASA = $request->NAMAJASA;
         $jasa->HARGAJASA = $request->HARGAJASA;
 
