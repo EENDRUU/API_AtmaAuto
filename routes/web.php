@@ -98,6 +98,16 @@ Route::group(['middleware' => ['jwt.verify']], function() {
      Route::get('/log', 'LogController@index');
     Route::post('/log', 'LogController@store');
 
+    //role
+    Route::get('/role', 'RoleController@index');
+
+
+    ///Route Pegawai
+    Route::get('/pegawai', 'PegawaiController@index');
+    Route::get('/pegawai/{ID_PEGAWAI}', 'PegawaiController@show');
+    Route::post('/pegawai', 'PegawaiController@store');
+    Route::post('/pegawai/{ID_PEGAWAI}', 'PegawaiController@update');
+    Route::delete('/pegawai/{ID_PEGAWAI}', 'PegawaiController@destroy');
 
 });
 
