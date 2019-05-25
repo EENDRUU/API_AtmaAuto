@@ -72,7 +72,7 @@ class PegawaiController extends Controller
      */
     public function show($ID_PEGAWAI)
     {
-        $pegawai=Sparepart::find($ID_PEGAWAI);
+        $pegawai=Pegawai::find($ID_PEGAWAI);
 
         if(is_null($pegawai))
         {
@@ -107,7 +107,7 @@ class PegawaiController extends Controller
      */
     public function update(Request $request, $ID_PEGAWAI)
     {
-        $pegawai=Sparepart::find($ID_PEGAWAI);
+        $pegawai=Pegawai::find($ID_PEGAWAI);
         if(is_null($pegawai))
         {
             return response()->json([
