@@ -141,7 +141,7 @@ class PegawaiController extends Controller
      */
     public function destroy($ID_PEGAWAI)
     {
-        $pegawai=Supplier::find($ID_PEGAWAI );
+        $pegawai=Pegawai::find($ID_PEGAWAI );
         if(is_null($pegawai))
         {
             return response()->json([
