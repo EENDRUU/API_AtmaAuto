@@ -83,6 +83,22 @@ class SupplierController extends Controller
         }
     }
 
+    public function showByID($ID_SUPPLIER)
+    {
+        $suppliers = Supplier::find($ID_SUPPLIER);
+        if(is_null($suppliers))
+        {
+            return response()->json([
+                'success' => false,
+                'message' => 'Sorry, supplier with nama: ' . $NAMASUPPLIER . ' cannot be found'
+            ]);
+        }
+        else{
+            return response()->json($suppliers,200);
+
+        }
+    }
+
     /**
      * Show the form for editing the specified resource.
      *

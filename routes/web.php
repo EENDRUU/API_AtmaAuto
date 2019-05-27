@@ -30,6 +30,7 @@ Route::group(['middleware' => ['jwt.verify']], function() {
     Route::get('/getStok', 'SparepartController@getSparepartStokKurang');
 
     ///Route Supplier
+    Route::get('/SupplierByID/{NAMASUPPLIER}', 'SupplierController@showByID');
     Route::get('/supplier', 'SupplierController@index');
     Route::get('/supplier/{NAMASUPPLIER}', 'SupplierController@show');
     Route::post('/supplier', 'SupplierController@store');
