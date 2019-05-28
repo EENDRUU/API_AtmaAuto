@@ -22,6 +22,16 @@ class DetilTransaksiPengadaanController extends Controller
         return DetilTransaksiPengadaan::all();
     }
 
+    public function getAllDetail()
+    {
+        $transaksiPengadaan = DB::table('detail_transaksipemesanan')
+        ->join('sparepart','detail_transaksipemesanan.KODE_SPAREPART','=','sparepart.KODE_SPAREPART')
+        ->select('detail_transaksipemesanan.*','sparepart.*')
+        ->get();
+        return $transaksiPengadaan;
+    }
+
+
     /**
      * Show the form for creating a new resource.
      *
