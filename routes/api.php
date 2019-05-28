@@ -30,3 +30,4 @@ Route::get('/sortByPrice', 'SparepartController@sortbyPrice');
 Route::get('/sortByStok', 'SparepartController@sortbyStok');
 
 Route::get('/riwayat/{NOMORPOLISI}/{NOMORTELEPON_KONSUMEN}', 'TransaksiPenjualanController@riwayatTransaksiKonsumen');
+

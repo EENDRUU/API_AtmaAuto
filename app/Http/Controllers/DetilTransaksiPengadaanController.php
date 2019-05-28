@@ -24,11 +24,11 @@ class DetilTransaksiPengadaanController extends Controller
 
     public function getAllDetail()
     {
-        $transaksiPengadaan = DB::table('detail_transaksipemesanan')
+        $detiltransaksiPengadaan = DB::table('detail_transaksipemesanan')
         ->join('sparepart','detail_transaksipemesanan.KODE_SPAREPART','=','sparepart.KODE_SPAREPART')
         ->select('detail_transaksipemesanan.*','sparepart.*')
         ->get();
-        return $transaksiPengadaan;
+        return $detiltransaksiPengadaan;
     }
 
 
