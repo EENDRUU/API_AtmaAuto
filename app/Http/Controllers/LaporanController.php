@@ -128,19 +128,19 @@ class LaporanController extends Controller
         $data = DB::select(
             'SELECT
             MONTH(tanggal_histori) "bulan",
-            kode_sparepart,
+            KODE_SPAREPART "kode_sparepart",
             tipe "tipe_sparepart",
             sisa_stok
             FROM
                 historis
-            JOIN spareparts USING(kode_sparepart)
+            JOIN spareparts USING(KODE_SPAREPART)
             WHERE
                 tipe = :barang AND tanggal_histori IN(
                 SELECT
                     MAX(tanggal_histori)
                 FROM
                     historis
-                JOIN spareparts USING(kode_sparepart)
+                JOIN spareparts USING(KODE_SPAREPART)
                 WHERE
                     YEAR(tanggal_histori) = :tahun AND tipe = :barang1
                 GROUP BY

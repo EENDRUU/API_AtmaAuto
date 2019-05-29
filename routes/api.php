@@ -38,5 +38,5 @@ Route::get('penjualanjasa/{bulan}/{tahun}', 'LaporanController@penjualanJasa');/
 Route::get('pendapatanbulanan/{id}', 'LaporanController@pendapatanBulanan');//->middleware('isAdmin');
 // Route::get('pendapatanbulanandesktop/{id}', 'LaporanController@pendapatanBulananDesktop');//->middleware('isAdmin');
 Route::get('sparepartterlaris/{id}', 'LaporanController@sparepartTerlaris');//->middleware('isAdmin');
-// Route::get('sisastok/{barang}/{tahun}', 'LaporanController@sisaStok');//->middleware('isAdmin');
+Route::get('sisastok/{barang}/{tahun}', 'LaporanController@sisaStok');//->middleware('isAdmin');
 Route::get('pendapatantahunan', 'LaporanController@pendapatanTahunan');//->middleware('isAdmin');
