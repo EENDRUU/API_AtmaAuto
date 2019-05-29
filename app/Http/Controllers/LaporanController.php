@@ -180,7 +180,7 @@ class LaporanController extends Controller
             FROM
                 transaksi_penjualan
             JOIN pegawai USING(ID_PEGAWAI)
-            JOIN cabangs a USING(ID_CABANG)
+            JOIN cabang a USING(ID_CABANG)
             WHERE
                 STATUS_BAYAR = "Sudah Dibayar"
             GROUP BY
