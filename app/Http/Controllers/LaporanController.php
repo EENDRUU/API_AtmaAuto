@@ -175,14 +175,16 @@ class LaporanController extends Controller
         $data = DB::select(
             'SELECT
             YEAR(TANGGALPENJUALAN) "tahun",
+            a.nama "cabang",
             SUM(TOTALTRANSAKSIPENJUALAN) "total"
             FROM
                 transaksi_penjualan
             JOIN pegawai USING(ID_PEGAWAI)
+            JOIN cabangs a USING(ID_CABANG)
             WHERE
                 STATUS_BAYAR = "Sudah Dibayar"
             GROUP BY
-                YEAR(TANGGALPENJUALAN)
+            a.nama, YEAR(TANGGALPENJUALAN)
             ORDER BY tahun', [1]);
 
             return response()->json($data, 200);
