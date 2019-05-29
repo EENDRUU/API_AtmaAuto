@@ -31,3 +31,12 @@ Route::get('/sortByStok', 'SparepartController@sortbyStok');
 
 Route::get('/riwayat/{NOMORPOLISI}/{NOMORTELEPON_KONSUMEN}', 'TransaksiPenjualanController@riwayatTransaksiKonsumen');
 
+//laporan
+Route::get('pengeluaranbulanan/{id}', 'LaporanController@pengeluaranBulanan');//->middleware('isAdmin');
+Route::get('penjualanjasa/{bulan}/{tahun}', 'LaporanController@penjualanJasa');//->middleware('isAdmin');
+// Route::get('pengeluaranbulanandesktop/{id}', 'LaporanController@pengeluaranBulananDesktop');//->middleware('isAdmin');
+Route::get('pendapatanbulanan/{id}', 'LaporanController@pendapatanBulanan');//->middleware('isAdmin');
+// Route::get('pendapatanbulanandesktop/{id}', 'LaporanController@pendapatanBulananDesktop');//->middleware('isAdmin');
+Route::get('sparepartterlaris/{id}', 'LaporanController@sparepartTerlaris');//->middleware('isAdmin');
+// Route::get('sisastok/{barang}/{tahun}', 'LaporanController@sisaStok');//->middleware('isAdmin');
+Route::get('pendapatantahunan', 'LaporanController@pendapatanTahunan');//->middleware('isAdmin');
