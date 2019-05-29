@@ -133,16 +133,16 @@ class LaporanController extends Controller
             sisa_stok
             FROM
                 historis
-            JOIN spareparts USING(KODE_SPAREPART)
+            JOIN sparepart USING(KODE_SPAREPART)
             WHERE
-                tipe = :barang AND tanggal_histori IN(
+                TIPE = :barang AND tanggal_histori IN(
                 SELECT
                     MAX(tanggal_histori)
                 FROM
                     historis
-                JOIN spareparts USING(KODE_SPAREPART)
+                JOIN sparepart USING(KODE_SPAREPART)
                 WHERE
-                    YEAR(tanggal_histori) = :tahun AND tipe = :barang1
+                    YEAR(tanggal_histori) = :tahun AND TIPE = :barang1
                 GROUP BY
                     MONTH(tanggal_histori),
                     YEAR(tanggal_histori)
