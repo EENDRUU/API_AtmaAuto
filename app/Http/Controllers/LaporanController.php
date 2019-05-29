@@ -140,6 +140,7 @@ class LaporanController extends Controller
                     MAX(tanggal_histori)
                 FROM
                     historis
+
                 JOIN sparepart USING(KODE_SPAREPART)
                 WHERE
                     YEAR(tanggal_histori) = :tahun AND TIPE = :barang1
