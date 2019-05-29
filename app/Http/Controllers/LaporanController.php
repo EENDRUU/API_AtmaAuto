@@ -129,7 +129,7 @@ class LaporanController extends Controller
             'SELECT
             MONTH(tanggal_histori) "bulan",
             KODE_SPAREPART "kode_sparepart",
-            tipe "tipe_sparepart",
+            TIPE "tipe_sparepart",
             sisa_stok
             FROM
                 historis
