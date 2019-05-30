@@ -19,7 +19,11 @@ class DetilTransaksiPenjualanJasaController extends Controller
      */
     public function index()
     {
-        return DetilTransaksiPenjualanJasa::all();
+       $detilTransaksiPenjualanJasa = DB::table('detail_transaksi_penjualanjasa')
+        ->join('jasa','detail_transaksi_penjualanjasa.ID_JASA','=','jasa.ID_JASA')
+        ->select('detail_transaksi_penjualanjasa.*','jasa.NAMAJASA')
+        ->get();
+        return $detilTransaksiPenjualanJasa;
     }
 
     /**
