@@ -17,6 +17,8 @@ class KendaraanPelangganController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
     public function index()
     {
         $kendaraanPelanggan = DB::table('kendaraankonsumen')
@@ -26,6 +28,22 @@ class KendaraanPelangganController extends Controller
         ->get();
         return $kendaraanPelanggan;
     }
+
+    public function getMerek()
+    {
+        $kendaraanPelanggan = DB::table('merekkendaraan')
+        ->select('merekkendaraan.*')
+        ->get();
+        return $kendaraanPelanggan;
+    }
+    public function getTipe()
+    {
+        $kendaraanPelanggan = DB::table('tipekendaraan')
+        ->select('tipekendaraan.*')
+        ->get();
+        return $kendaraanPelanggan;
+    }
+
 
     /**
      * Show the form for creating a new resource.

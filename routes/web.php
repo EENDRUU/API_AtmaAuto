@@ -90,6 +90,8 @@ Route::group(['middleware' => ['jwt.verify']], function() {
 
      ///Route Kendaraan Konsumen
      Route::get('/kendaraan', 'KendaraanPelangganController@index');
+     Route::get('/getTipe', 'KendaraanPelangganController@getTipe');
+     Route::get('/getMerek', 'KendaraanPelangganController@getMerek');
      Route::get('/kendaraan/{NOMORPOLISI}', 'KendaraanPelangganController@show');
      Route::post('/kendaraan', 'KendaraanPelangganController@store');
      Route::post('/kendaraan/{NOMORPOLISI}', 'KendaraanPelangganController@update');
