@@ -95,7 +95,7 @@ Route::group(['middleware' => ['jwt.verify']], function() {
      Route::get('/kendaraan/{NOMORPOLISI}', 'KendaraanPelangganController@show');
      Route::post('/kendaraan', 'KendaraanPelangganController@store');
      Route::post('/kendaraan/{NOMORPOLISI}', 'KendaraanPelangganController@update');
-     Route::delete('/supplier/{NOMORPOLISI}', 'KendaraanPelangganController@destroy');
+     Route::delete('/kendaraan/{NOMORPOLISI}', 'KendaraanPelangganController@destroy');
 
 
      //log
