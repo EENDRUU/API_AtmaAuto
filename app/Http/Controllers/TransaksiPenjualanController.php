@@ -99,6 +99,7 @@ class TransaksiPenjualanController extends Controller
         ->join('konsumen','transaksi_penjualan.ID_KONSUMEN','=','konsumen.ID_KONSUMEN')
         ->join('pegawai','transaksi_penjualan.ID_PEGAWAI','=','pegawai.ID_PEGAWAI')
         ->select('transaksi_penjualan.*','konsumen.NAMAKONSUMEN','pegawai.NAMA_PEGAWAI')
+        ->where('transaksi_penjualan.NOMOR_TRANSAKSI','=',$NOMOR_TRANSAKSI)
         ->first();
         if(is_null($transaksiPenjualan))
         {
