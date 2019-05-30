@@ -103,7 +103,7 @@ class KendaraanPelangganController extends Controller
         }
         else
         {
-            return response()->json($NOMORPOLISI,200);
+            return response()->json($kendaraanPelanggan,200);
         }
     }
 
