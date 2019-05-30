@@ -72,9 +72,21 @@ class KendaraanPelangganController extends Controller
      * @param  \App\KendaraanPelanggan  $kendaraanPelanggan
      * @return \Illuminate\Http\Response
      */
-    public function show(KendaraanPelanggan $kendaraanPelanggan)
+    public function show($NOMORPOLISI)
     {
-        //
+        $kendaraanPelanggan=KendaraanPelanggan::find($NOMORPOLISI);
+
+        if(is_null($NOMORPOLISI))
+        {
+            return response()->json([
+                'success' => false,
+                'message' => 'Sorry, KendaraanPelanggan with kode NOMORPOLISI: ' . $NOMORPOLISI . ' cannot be found'
+            ]);
+        }
+        else
+        {
+            return response()->json($NOMORPOLISI,200);
+        }
     }
 
     /**
@@ -83,9 +95,32 @@ class KendaraanPelangganController extends Controller
      * @param  \App\KendaraanPelanggan  $kendaraanPelanggan
      * @return \Illuminate\Http\Response
      */
-    public function edit(KendaraanPelanggan $kendaraanPelanggan)
+    public function edit(Request $request, $NOMORPOLISI)
     {
-        //
+        $kendaraanPelanggan=KendaraanPelanggan::find($NOMORPOLISI);
+        if(is_null($kendaraanPelanggan))
+        {
+            return response()->json([
+                'success' => false,
+                'message' => 'Sorry, kendaraanPelanggan with NOMORPOLISI : ' . $NOMORPOLISI  . ' cannot be found'
+            ]);
+        }
+
+        $updated = $kendaraanPelanggan->fill($request->all())
+            ->save();
+
+        if ($updated) {
+            return response()->json([
+                'success' => true,
+                'data' => $kendaraanPelanggan,
+                'message' => 'kendaraanPelanggan updated'
+            ]);
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' => 'Sorry, kendaraanPelanggan could not be updated'
+            ], 500);
+        }
     }
 
     /**
@@ -106,8 +141,32 @@ class KendaraanPelangganController extends Controller
      * @param  \App\KendaraanPelanggan  $kendaraanPelanggan
      * @return \Illuminate\Http\Response
      */
-    public function destroy(KendaraanPelanggan $kendaraanPelanggan)
+    public function destroy($NOMORPOLISI)
     {
-        //
+        $kendaraanPelanggan=KendaraanPelanggan::find($NOMORPOLISI);
+        if(is_null($kendaraanPelanggan))
+        {
+            return response()->json([
+                'success' => false,
+                'message' => 'Sorry, kendaraanPelanggan with NOMORPOLISI : ' . $NOMORPOLISI  . ' cannot be found'
+            ]);
+        }
+
+        $success=$kendaraanPelanggan->delete();
+
+        if(!$success)
+        {
+            return response()->json([
+                'success' => false,
+                'message' => 'Sorry, kendaraanPelanggan could not be deleted'
+            ], 500);
+        }
+        else{
+            return response()->json([
+                'success' => true,
+                'data' => $kendaraanPelanggan,
+                'message' => 'pegawai Deleted'
+            ]);
+        }
     }
 }

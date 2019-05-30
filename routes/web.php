@@ -90,10 +90,10 @@ Route::group(['middleware' => ['jwt.verify']], function() {
 
      ///Route Kendaraan Konsumen
      Route::get('/kendaraan', 'KendaraanPelangganController@index');
-     // Route::get('/supplier/{NAMASUPPLIER}', 'SupplierController@show');
+     Route::get('/kendaraan/{NOMORPOLISI}', 'KendaraanPelangganController@show');
      Route::post('/kendaraan', 'KendaraanPelangganController@store');
-     // Route::post('/supplier/{ID_SUPPLIER}', 'SupplierController@update');
-     // Route::delete('/supplier/{ID_SUPPLIER}', 'SupplierController@destroy');
+     Route::post('/kendaraan/{NOMORPOLISI}', 'KendaraanPelangganController@update');
+     Route::delete('/supplier/{NOMORPOLISI}', 'KendaraanPelangganController@destroy');
 
 
      //log
